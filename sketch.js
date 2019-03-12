@@ -79,18 +79,17 @@ const result = document.getElementById('result'); // The result tag in the HTML
 const probability = document.getElementById('probability'); // The probability tag in the HTML
 
 // Initialize the Image Classifier method
-const classifier = tf.loadLayersModel('./models/pets/model.json');
-
-// Make a prediction with the selected image
-// This will return an array with a default of 10 options with their probabilities
-classifyImage();
+let classifier;
+async function load (){
+  classifier = await tf.loadLayersModel('./models/pets/model.json');
+  classifyImage()
+}
+load()
 
 async function classifyImage() {
-  const classifier = await tf.loadLayersModel('./models/pets/model.json');
   imgEl_tf = tf.browser.fromPixels(image);
   imgEl_exp = imgEl_tf.div(127.5).sub(1).expandDims(0)
   prediction = await classifier.predict(tf.image.resizeBilinear(imgEl_exp, [224, 224]))
-  let resultTxt;
   let prob;
   prediction.array().then(n => prob = Math.max(...n[0])).then(n => {
     prob = n * 100;
