@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+  <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
 </head>
 
 <body onresize="windowResized()">
@@ -30,7 +31,7 @@
       </p>
       <p id="warning" class="result-color"></p>
       <p class="result-color">
-        The model labeled this ⤴ as a
+        The MobileNet model labeled this ⤴ as a
         <span id="result" class="green-color">...</span>
         <span id="probability-container" class="result-color">
           with a confidence of
@@ -40,7 +41,7 @@
       <input name="imgFile" type="file" id="fileUploader" accept="image/*" onChange="handleFiles()">
     </div>
   </div>
-  <script src="sketch.js"></script>
+  <script src="sketch_mobileNet.js"></script>
 </body>
 
 </html>

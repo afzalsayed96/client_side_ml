@@ -83,7 +83,7 @@ let classifier, loadStartTime, loadCompleteTime;
 async function loadModel() {
   loadStartTime = window.performance.now()
   console.log("Loading model...")
-  classifier = await tf.loadLayersModel('./models/pets/model.json');
+  classifier = await await mobilenet.load();
   loadCompleteTime = window.performance.now()
   console.log("Model loaded in " + Number.parseFloat(loadCompleteTime - loadStartTime).toFixed(2).toString() + "ms")
   modelLoaded()
@@ -96,22 +96,17 @@ function modelLoaded() {
   document.getElementById('container').style.display = "block"
 }
 
+
 async function classifyImage() {
   inferenceStartTime = window.performance.now()
   console.log("Starting Inference...")
-  imgEl_tf = tf.browser.fromPixels(image);
-  imgEl_exp = imgEl_tf.div(127.5).sub(1).expandDims(0)
-  prediction = await classifier.predict(tf.image.resizeBilinear(imgEl_exp, [224, 224]))
+  prediction = await classifier.classify(image);
   inferenceCompleteTime = window.performance.now()
   console.log("Inference completed in " + Number.parseFloat(inferenceCompleteTime - inferenceStartTime).toFixed(2).toString() + "ms")
-  prediction.array().then(n => prob = Math.max(...n[0])).then(n => {
-    let prob = n * 100;
-    probability.innerText = Number.parseFloat(prob).toFixed(2) + '%';
-  })
-  prediction.argMax(1).data().then(resultTxt => resultTxt[0]).then(resultTxt => {
-    result.innerText = class_names[resultTxt]
-    console.log(class_names[resultTxt])
-  })
+  let prob = prediction[0]["probability"] * 100;
+  probability.innerText = Number.parseFloat(prob).toFixed(2) + '%';
+  result.innerText = prediction[0]["className"]
+  console.log(prediction[0]["className"])
 }
 
 let class_names = [

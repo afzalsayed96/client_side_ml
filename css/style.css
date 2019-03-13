@@ -28,12 +28,22 @@ html, body {
   max-width: 90%;
 }
 
+#loader {
+  display: flex;
+  min-height: 100vh;
+  min-width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
 #container {
   background: #c79ef812;
   height: 500px;
   padding: 50px;
   font-size: 14px;
   border-radius: 33px;
+  display: none;
 }
 
 #text-container {
