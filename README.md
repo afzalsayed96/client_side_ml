@@ -59,7 +59,8 @@ tfjs.converters.save_keras_model(model, "./models/quantized", quantization_dtype
 
 
 ## Using TensorflowJS for inference
-Live preview: https://difference-engine.github.io/tensorflowjs_demo/
+- Live preview: https://difference-engine.github.io/tensorflowjs_demo/
+- mobileNet model: https://difference-engine.github.io/tensorflowjs_demo/mobileNet 
 ### Loading the model
 ```javascript
 classifier = await tf.loadLayersModel('model.json');
