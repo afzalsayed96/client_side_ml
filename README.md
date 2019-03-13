@@ -43,7 +43,9 @@ def train(...):
     tfjs.converters.save_keras_model(model, tfjs_target_dir)
 ```
 
-**Note**: The model generated with bash gives an error while loading. Use `convert.py` for our model.
+**Note**: The model generated with bash command method gives an error
+while loading. Use `convert.py` for our model.
+GH issue: https://github.com/tensorflow/tfjs/issues/755
 
 ## Quantization
 We quantize our model in order to reduce it's size
