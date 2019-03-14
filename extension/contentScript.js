@@ -3,7 +3,6 @@ var elements = document.body.getElementsByTagName("img");
 var body = document.body;
 [...elements].map((el) => {
     if (el.height > 100 && el.width > 100) {
-        console.log(el)
         scanImgs(el)
     }
 })
@@ -36,7 +35,6 @@ function flattenImg(image) {
 }
 
 function scanImgs(el) {
-    console.log(el)
     images.push(el.src);
     var node = document.createElement("div")
     node.style.position = "relative"
