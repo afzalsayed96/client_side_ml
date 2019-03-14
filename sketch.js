@@ -96,11 +96,13 @@ function modelLoaded() {
   document.getElementById('container').style.display = "block"
 }
 
+let data
 async function classifyImage() {
   inferenceStartTime = window.performance.now()
   console.log("Starting Inference...")
   imgEl_tf = tf.browser.fromPixels(image);
-  imgEl_exp = imgEl_tf.div(127.5).sub(1).expandDims(0)
+  imgEl_exp = imgEl_tf.div(127.5).sub(1).expandDims(0) //Normalise
+  data = imgEl_exp
   prediction = await classifier.predict(tf.image.resizeBilinear(imgEl_exp, [224, 224]))
   inferenceCompleteTime = window.performance.now()
   console.log("Inference completed in " + Number.parseFloat(inferenceCompleteTime - inferenceStartTime).toFixed(2).toString() + "ms")
