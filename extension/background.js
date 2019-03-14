@@ -35,16 +35,29 @@ chrome.runtime.onMessage.addListener(
         console.log(sender.tab ?
             "from a content script:" + sender.tab.url :
             "from the extension");
-        if (request.type == "image")
-            sendResponse({ prediction: makePrediction(request.image) });
+
+        if (request.type == "image") {
+            result = makePrediction(request.data)
+            result.then((prediction) => sendResponse({ prediction: prediction }));
+        }
+        return true;
     });
 
-async function makePrediction(img) {
-    console.log(img)
-    data = img
+function normalizeImg(image_tf) {
+    image_tf_exp = image_tf.div(127.5).sub(1).expandDims(0) //Normalise
+    return image_tf_exp
+}
+
+function createTensor(data) {
+    return tf.tensor3d(data, [224, 224, 3])
+}
+
+async function makePrediction(data) {
     let result
+    let img_tf = createTensor(data)
+    let img = normalizeImg(img_tf)
     prediction = await classifier.predict(img)
-    prediction.argMax(1).data().then(resultTxt => resultTxt[0]).then(resultTxt => {
+    await prediction.argMax(1).data().then(resultTxt => resultTxt[0]).then(resultTxt => {
         result = class_names[resultTxt]
         console.log(class_names[resultTxt])
     })
