@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="./custom_layer.js"></script>
+    <!-- <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script> -->
+</head>
+
+<body>
+    <div id="console"></div>
+    <!-- Add an image that we will use to test -->
+    <!-- <img id="img1" crossOrigin src="./images/sphynx.jpg" width="224" height="224" /> -->
+    <img id="img" crossOrigin src="../images/meme.jpg" width=640 />
+    <!-- Load index.js after the content of the page -->
+    <script>
+        let net, result, model, imgEl_tf;
+
+        async function app() {
+            model = await tf.loadGraphModel('../models/line_style_model/model.json');
+            const imgEl = document.getElementById('img');
+            imgEl_tf = tf.image.resizeBilinear(tf.browser.fromPixels(imgEl), [256, 256]).toFloat();
+
+            result = await model.execute(imgEl_tf);
+            result = tf.image.resizeBilinear(result, [imgEl.height, imgEl.width])
+            result.data().then(data => {
+                var array = Array.prototype.slice.call(data);
+                var c = document.createElement("canvas");
+                c.width = imgEl.width;
+                c.height = imgEl.height;
+                var ctx = c.getContext("2d");
+                var imgData = ctx.createImageData(imgEl.width, imgEl.height);
+
+                var i;
+                for (i = 0, j = 0; i < imgData.data.length; i += 4, j += 3) {
+                    imgData.data[i + 0] = array[j];
+                    imgData.data[i + 1] = array[j + 1];
+                    imgData.data[i + 2] = array[j + 2];
+                    imgData.data[i + 3] = 255;
+                }
+
+                ctx.putImageData(imgData, 0, 0);
+                document.body.appendChild(c)
+            })
+            result.print();
+        }
+
+        // app();
+    </script>
+</body>
+
+</html>
