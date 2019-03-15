@@ -6,13 +6,26 @@
 tensorflowjs_demo
 ├── convert.py
 ├── css
+├── demo1.html
+├── extension
+│   ├── pets_classification
+│   ├── pets_classification.crx
+│   ├── pets_classification.pem
+│   ├── style_transfer
+│   ├── style_transfer.crx
+│   └── style_transfer.pem
 ├── images
 ├── index.html
 ├── mobileNet.html
 ├── models
 ├── README.md
 ├── sketch.js
-└── sketch_mobileNet.js
+├── sketch_mobileNet.js
+└── style_transfer_demo
+    ├── convert.py
+    ├── custom_layer.js
+    └── demo2.html
+
 ```
 
 ## Model
@@ -75,7 +88,25 @@ prediction = await classifier.predict(image)
 ## Extensions
 
 ### Pet Classification
+extension-file `extension/pet_classification.crx`
+
 <img src="images/pet_demo.gif">
 
 ### Style Transfer
-<img src="images/style.gif">
+
+extension-file `extension/style_transfer.crx`
+
+<img src="images/style_demo.gif">
+
+
+## Installing extension
+
+- Clone the repo
+- In chrome go to `chrome://extensions/`
+- Enable developer mode on the top right.
+- Click on load unpacked on top left
+- Navigate to `extension/pets_classification` or `extension/style_transfer` and click open`
+
+**Note**: 
+- Disable the extension when not using
+- Do not enable both extensions at once
