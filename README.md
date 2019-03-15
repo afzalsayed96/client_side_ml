@@ -70,3 +70,12 @@ classifier = await tf.loadLayersModel('model.json');
 prediction = await classifier.predict(image)
 ```
 **Note**: First inference is very slow in browser because time of first call also includes the compilation time of WebGL shader programs for the model. [Refer](https://github.com/tensorflow/tfjs-converter#faq).
+
+
+## Extensions
+
+### Pet Classification
+<img src="images/pet_demo.gif">
+
+### Style Transfer
+<img src="images/style.gif">
