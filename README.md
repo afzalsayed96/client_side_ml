@@ -1,4 +1,5 @@
-# tensorflowjs_demo
+# Client Side ML
+This project was developed as a side project at  <img src="https://difference-engine.ai/difference-engine-logo-partial.c8f56d0a.svg" height="40px" style="vertical-align: middle;"/> [difference-engine.ai](difference-engine.ai)
 
 ## Directory Structure
 
