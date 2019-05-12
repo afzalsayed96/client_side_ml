@@ -79,7 +79,7 @@ html, body {
   opacity: 0;
 }
 
-#uploader-btn {
+#uploader-btn, #style-btn {
   background: #faebd700;
   margin-top: 1em;
   color: #0bcf81;
@@ -92,7 +92,7 @@ html, body {
   border-radius: 10px;
 }
 
-#uploader-btn:hover {
+#uploader-btn:hover, #style-btn:hover {
   color: white;
   background-color: #0bcf82;
   border: solid 1px #0bcf82;

@@ -9,7 +9,6 @@ This project was developed as a side project at [difference-engine.ai](differenc
     tensorflowjs_demo
     ├── convert.py
     ├── css
-    ├── demo1.html
     ├── extension
     │   ├── pets_classification
     │   ├── pets_classification.crx
@@ -18,7 +17,8 @@ This project was developed as a side project at [difference-engine.ai](differenc
     │   ├── style_transfer.crx
     │   └── style_transfer.pem
     ├── images
-    ├── index.html
+    ├── pets_classification.html
+    ├── style_transfer.html
     ├── mobileNet.html
     ├── models
     ├── README.md
@@ -79,9 +79,10 @@ tfjs.converters.save_keras_model(model, "./models/quantized", quantization_dtype
 
 ## Using TensorflowJS for inference
 
--   Live preview: <https://difference-engine.github.io/tensorflowjs_demo/>
--   mobileNet model: <https://difference-engine.github.io/tensorflowjs_demo/mobileNet> 
-    ### Loading the model
+-   Pet Classification preview: <https://afzalsayed96.github.io/tensorflowjs_demo/pets_classification.html>
+-   Style Transfer preview: <https://afzalsayed96.github.io/tensorflowjs_demo/style_transfer.html>
+
+### Loading the model
 
 ```javascript
 classifier = await tf.loadLayersModel('model.json');
