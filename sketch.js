@@ -83,7 +83,7 @@ let classifier, loadStartTime, loadCompleteTime;
 async function loadModel() {
   loadStartTime = window.performance.now()
   console.log("Loading model...")
-  classifier = await tf.loadLayersModel('./models/pets_quantized/model.json');
+  classifier = await tf.loadLayersModel('./models/quantized/model.json');
   loadCompleteTime = window.performance.now()
   console.log("Model loaded in " + Number.parseFloat(loadCompleteTime - loadStartTime).toFixed(2).toString() + "ms")
   modelLoaded()
