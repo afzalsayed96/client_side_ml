@@ -7,7 +7,7 @@ function startup() {
     async function loadModel() {
         loadStartTime = window.performance.now()
         console.log("Loading model...")
-        classifier = await tf.loadLayersModel('https://afzalsayed96.github.io/tensorflowjs_demo/models/quantized/model.json');
+        classifier = await tf.loadLayersModel('https://afzalsayed96.github.io/client_side_ml/models/quantized/model.json');
         loadCompleteTime = window.performance.now()
         console.log("Model loaded in " + Number.parseFloat(loadCompleteTime - loadStartTime).toFixed(2).toString() + "ms")
         modelLoaded()

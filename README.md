@@ -6,7 +6,7 @@ This project was developed as a side project at [difference-engine.ai](differenc
 
 ## Directory Structure
 
-    tensorflowjs_demo
+    client_side_ml
     ├── convert.py
     ├── css
     ├── extension
@@ -79,8 +79,8 @@ tfjs.converters.save_keras_model(model, "./models/quantized", quantization_dtype
 
 ## Using TensorflowJS for inference
 
--   Pet Classification preview: <https://afzalsayed96.github.io/tensorflowjs_demo/pets_classification.html>
--   Style Transfer preview: <https://afzalsayed96.github.io/tensorflowjs_demo/style_transfer.html>
+-   Pet Classification preview: <https://afzalsayed96.github.io/client_side_ml/pets_classification.html>
+-   Style Transfer preview: <https://afzalsayed96.github.io/client_side_ml/style_transfer.html>
 
 ### Loading the model
 
