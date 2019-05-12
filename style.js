@@ -49,11 +49,9 @@ function gotImage(e) {
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             image.src = reader.result;
-            setTimeout(classifyImage, 100);
         }
     } else {
-        image.src = 'images/sphynx.jpg';
-        setTimeout(classifyImage, 100);
+        image.src = 'images/meme.jpg';
         warning.innerHTML = 'Please drop an image file.'
     }
 }
@@ -61,13 +59,11 @@ function gotImage(e) {
 function handleFiles() {
     const curFiles = fileInput.files;
     if (curFiles.length === 0) {
-        image.src = 'images/sphynx.jpg';
-        setTimeout(classifyImage, 100);
+        image.src = 'images/meme.jpg';
         warning.innerHTML = 'No image selected for upload';
     } else {
         image.src = window.URL.createObjectURL(curFiles[0]);
         warning.innerHTML = '';
-        setTimeout(classifyImage, 100);
     }
 }
 
