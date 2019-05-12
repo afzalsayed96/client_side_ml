@@ -105,7 +105,7 @@ extension-file `extension/style_transfer.crx`
 - In chrome go to `chrome://extensions/`
 - Enable developer mode on the top right.
 - Click on load unpacked on top left
-- Navigate to `extension/pets_classification` or `extension/style_transfer` and click open`
+- Navigate to `extension/pets_classification` or `extension/style_transfer` and click open
 
 **Note**: 
 - Disable the extension when not using
